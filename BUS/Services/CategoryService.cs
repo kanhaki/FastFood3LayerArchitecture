@@ -1,5 +1,7 @@
-﻿using DAT.Entity;
+﻿using AutoMapper;
+using DAT.Entity;
 using DAT.Repository;
+using DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +12,25 @@ namespace BUS.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _repo;
+        private readonly IMapper _mapper;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(ICategoryRepository repo, IMapper mapper)
         {
-            _categoryRepository = categoryRepository;
+            _repo = repo;
+            _mapper = mapper;
         }
 
-        public async Task<List<Category>> GetAllCategoriesAsync()
-            => await _categoryRepository.GetAllAsync();
+        public async Task<List<CategoryDTO>> GetAllCategoriesAsync()
+        {
+            var categories = await _repo.GetAllCategoriesAsync();
+            return _mapper.Map<List<CategoryDTO>>(categories);
+        }
 
-        public async Task<List<Category>> GetAllWithProductsAsync()
-            => await _categoryRepository.GetAllWithProductsAsync();
+        public async Task<CategoryDTO> GetCategoryByIdAsync(int categoryId)
+        {
+            var category = await _repo.GetCategoryByIdAsync(categoryId);
+            return _mapper.Map<CategoryDTO>(category);
+        }
     }
 }

@@ -1,5 +1,7 @@
-﻿using DAT.Entity;
+﻿using AutoMapper;
+using DAT.Entity;
 using DAT.Repository;
+using DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +13,40 @@ namespace BUS.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        private readonly IComboRepository _comboRepository;
+        private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository, IComboRepository comboRepository)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
-            _comboRepository = comboRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<Product>> GetAllProductsAsync()
-            => await _productRepository.GetAllProductsAsync();
+        // Lấy tất cả sản phẩm
+        public async Task<List<ProductDTO>> GetAllProductsAsync()
+        {
+            var products = await _productRepository.GetAllProductsAsync();
+            return _mapper.Map<List<ProductDTO>>(products);
+        }
 
-        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, bool isCombo)
-            => await _productRepository.GetProductsByCategoryAsync(categoryId, isCombo);
+        // Lấy sản phẩm theo Category
+        public async Task<List<ProductDTO>> GetProductsByCategoryAsync(int categoryId, bool isCombo)
+        {
+            var products = await _productRepository.GetProductsByCategoryAsync(categoryId, isCombo);
+            return _mapper.Map<List<ProductDTO>>(products);
+        }
 
-        public async Task<List<Product>> GetComboProductsAsync()
-            => await _productRepository.GetComboProductsAsync();
+        // Lấy combo với chi tiết
+        public async Task<ProductDTO> GetComboWithDetailsAsync(int comboId)
+        {
+            var combo = await _productRepository.GetProductByIdAsync(comboId);
+            return _mapper.Map<ProductDTO>(combo);
+        }
 
-        public async Task<Product> GetComboWithDetailsAsync(int comboId)
-            => await _comboRepository.GetComboWithDetailsAsync(comboId);
+        public async Task<ProductDTO> GetProductByIdAsync(int productId)
+        {
+            var product = await _productRepository.GetProductByIdAsync(productId);
+            return _mapper.Map<ProductDTO>(product);
+        }
     }
+
 }

@@ -14,7 +14,7 @@ namespace BUS.Mapping
         public MappingProfile()
         {
             // Product -> ProductDto
-            CreateMap<Product, ProductDto>()
+            CreateMap<Product, ProductDTO>()
                 .ForMember(dest => dest.ComboOptionGroups, opt => opt.MapFrom(src => src.ComboOptionGroups));
 
             // ComboOptionGroup -> DTO

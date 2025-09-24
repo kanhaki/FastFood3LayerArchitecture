@@ -11,6 +11,6 @@ namespace DTO.DTO
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ImageUrl { get; set; }
-        public List<ProductDto> Products { get; set; } = new List<ProductDto>();
+        public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
     }
 }

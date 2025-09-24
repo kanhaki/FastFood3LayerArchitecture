@@ -1,4 +1,5 @@
 ﻿using DAT.Entity;
+using DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BUS.Services
 {
     public interface IComboService
     {
-        Task<Product> GetComboWithDetailsAsync(int comboId);
+        Task<ProductDTO> GetComboWithDetailsAsync(int comboId);
         Task<bool> ValidateComboSelectionAsync(int comboId, Dictionary<int, int> selectedOptionIds);
     }
 }

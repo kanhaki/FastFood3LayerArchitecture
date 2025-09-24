@@ -14,6 +14,7 @@ namespace DAT.Repository
         Task<List<Product>> GetAllProductsAsync();
         Task<List<Product>> GetComboProductsAsync();
         Task<List<Product>> GetProductsByCategoryAsync(int categoryId, bool isCombo);
+        Task<Product> GetProductByIdAsync(int productId);
     }
     public class ProductRepository : Repository<Product>, IProductRepository
     {
@@ -39,6 +40,15 @@ namespace DAT.Repository
             return await _dbSet
                 .Where(p => p.CategoryId == categoryId && p.IsCombo == isCombo)
                 .ToListAsync();
+        }
+
+        public async Task<Product> GetProductByIdAsync(int productId)
+        {
+            return await _context.Products
+                .Include(p => p.ComboOptionGroups)
+                    .ThenInclude(g => g.ComboOptionItems)
+                        .ThenInclude(i => i.Product)
+                .FirstOrDefaultAsync(p => p.ProductId == productId);
         }
     }
 }

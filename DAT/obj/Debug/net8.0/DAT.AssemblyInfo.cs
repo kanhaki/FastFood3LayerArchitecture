@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DAT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4a2111c0225a8f1d8d2937dc5a5055fe3b6807b")]
 [assembly: System.Reflection.AssemblyProductAttribute("DAT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DAT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

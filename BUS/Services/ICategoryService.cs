@@ -1,4 +1,5 @@
 ﻿using DAT.Entity;
+using DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BUS.Services
 {
     public interface ICategoryService
     {
-        Task<List<Category>> GetAllCategoriesAsync();
-        Task<List<Category>> GetAllWithProductsAsync();
+        Task<List<CategoryDTO>> GetAllCategoriesAsync();
+        Task<CategoryDTO> GetCategoryByIdAsync(int categoryId);
     }
 }

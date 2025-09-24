@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3A2016CD-39AE-486F-8377-DAF9A20EB2E1}|Model\\Model.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\model\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3A2016CD-39AE-486F-8377-DAF9A20EB2E1}|Model\\Model.csproj|solutionrelative:model\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dto\\dto\\combooptionitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|solutionrelative:dto\\dto\\combooptionitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Model\\Class1.cs",
-              "RelativeDocumentMoniker": "Model\\Class1.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Model\\Class1.cs",
-              "RelativeToolTip": "Model\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T17:23:35.377Z",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "WebAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
+              "RelativeToolTip": "WebAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-24T20:34:59.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Class1.cs",
-              "RelativeDocumentMoniker": "DAT\\Class1.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Class1.cs",
-              "RelativeToolTip": "DAT\\Class1.cs",
+              "Title": "ComboOptionItemDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\ComboOptionItemDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\DTO\\ComboOptionItemDTO.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\ComboOptionItemDTO.cs",
+              "RelativeToolTip": "DTO\\DTO\\ComboOptionItemDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T12:58:46.888Z",
+              "WhenOpened": "2025-09-24T20:33:41.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Class1.cs",
-              "RelativeDocumentMoniker": "BUS\\Class1.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Class1.cs",
-              "RelativeToolTip": "BUS\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Mapping\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "BUS\\Mapping\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Mapping\\MappingProfile.cs",
+              "RelativeToolTip": "BUS\\Mapping\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T12:57:53.841Z"
+              "WhenOpened": "2025-09-24T20:30:12.621Z",
+              "EditorCaption": ""
             }
           ]
         }
