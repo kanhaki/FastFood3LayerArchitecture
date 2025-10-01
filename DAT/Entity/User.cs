@@ -21,7 +21,7 @@ namespace DAT.Entity
         [Required, MaxLength(255)]
         public string PasswordHash { get; set; }
 
-        public DateTime? DOB { get; set; }
+        public DateOnly? DOB { get; set; }
 
         [Required, MaxLength(20)]
         public string Role { get; set; } // enum: customer, admin, staff
