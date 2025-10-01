@@ -72,5 +72,30 @@ namespace BUS.Services
             await _unitOfWork.Users.AddAsync(user);
             await _unitOfWork.SaveChangesAsync();
         }
+        public async Task UpdateUserAsync(UserDTO userDto)
+        {
+            var user = await _unitOfWork.Users.GetByIdAsync(userDto.UserId);
+            if (user == null) throw new Exception("User not found");
+
+            user.FullName = userDto.FullName;
+            user.Email = userDto.Email;
+            user.DOB = userDto.DOB;
+            user.Role = userDto.Role;
+            user.AvatarUrl = userDto.AvatarUrl;
+            user.UpdatedAt = DateTime.Now;
+
+            _unitOfWork.Users.Update(user);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteUserAsync(int id)
+        {
+            var user = await _unitOfWork.Users.GetByIdAsync(id);
+            if (user == null) return false;
+
+            _unitOfWork.Users.Remove(user);
+            await _unitOfWork.SaveChangesAsync();
+            return true;
+        }
     }
 }

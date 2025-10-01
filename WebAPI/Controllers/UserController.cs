@@ -15,7 +15,6 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        // GET: api/user
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -23,7 +22,6 @@ namespace WebAPI.Controllers
             return Ok(users);
         }
 
-        // GET: api/user/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
@@ -32,14 +30,29 @@ namespace WebAPI.Controllers
             return Ok(user);
         }
 
-        // POST: api/user
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] UserDTO userDto)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             await _userService.AddUserAsync(userDto);
             return Ok(new { message = "User created successfully" });
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO userDto)
+        {
+            if (id != userDto.UserId) return BadRequest("User ID mismatch");
+
+            await _userService.UpdateUserAsync(userDto);
+            return Ok(new { message = "User updated successfully" });
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var result = await _userService.DeleteUserAsync(id);
+            if (!result) return NotFound();
+            return Ok(new { message = "User deleted successfully" });
+        }
     }
+
 }
