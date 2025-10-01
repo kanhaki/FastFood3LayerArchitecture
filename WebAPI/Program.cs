@@ -30,6 +30,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFoodItemService, FoodItemService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 
 
