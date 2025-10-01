@@ -1,5 +1,8 @@
-using BUS.Services;
+﻿using BUS.Services;
 using DAT.Repository;
+using Microsoft.EntityFrameworkCore;
+using System;
+using DAT;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,16 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(BUS.Mapping.MappingProfile));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    new MySqlServerVersion(new Version(10, 4, 32)))); // thay version đúng với MySQL bạn cài
 
-
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IComboRepository, ComboRepository>();
-
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IComboService, ComboService>();
 
 var app = builder.Build();
 
