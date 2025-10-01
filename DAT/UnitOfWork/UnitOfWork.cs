@@ -1,4 +1,5 @@
-﻿using DAT.Repository;
+﻿using DAT.Entity;
+using DAT.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace DAT.UnitOfWork
         }
 
         public IUserRepository Users => _userRepo ??= new UserRepository(_context);
-
+        public IGenericRepository<Category> Categories => Repository<Category>();
+        public IGenericRepository<FoodItem> FoodItems => Repository<FoodItem>();
         public IGenericRepository<T> Repository<T>() where T : class
         {
             var type = typeof(T);

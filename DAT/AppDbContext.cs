@@ -10,7 +10,7 @@ namespace DAT
         // DbSet cho từng bảng
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<FoodItem> FoodItems { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
         public DbSet<FoodItemPromotion> FoodItemPromotions { get; set; }
@@ -29,8 +29,8 @@ namespace DAT
             // Nếu muốn map đúng tên bảng trong MySQL (snake_case)
             modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<Address>().ToTable("addresses");
-            modelBuilder.Entity<Category>().ToTable("categories");
-            modelBuilder.Entity<FoodItem>().ToTable("food_items");
+            modelBuilder.Entity<Category>().ToTable("category");
+            modelBuilder.Entity<FoodItem>().ToTable("fooditems");
             modelBuilder.Entity<Promotion>().ToTable("promotions");
             modelBuilder.Entity<FoodItemPromotion>().ToTable("fooditemspromotions");
             modelBuilder.Entity<Order>().ToTable("orders");
