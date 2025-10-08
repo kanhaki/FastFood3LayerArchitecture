@@ -10,6 +10,7 @@ namespace BUS.Services
     public interface IFoodItemService
     {
         Task<IEnumerable<FoodItemDTO>> GetAllAsync();
+        Task<IEnumerable<FoodItemDTO>> GetFoodsByCategoryAsync(long categoryId);
         Task<FoodItemDTO?> GetByIdAsync(long id);
         Task AddAsync(FoodItemDTO dto);
         Task UpdateAsync(FoodItemDTO dto);

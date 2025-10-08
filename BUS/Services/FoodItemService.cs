@@ -35,6 +35,26 @@ namespace BUS.Services
             });
         }
 
+        public async Task<IEnumerable<FoodItemDTO>> GetFoodsByCategoryAsync(long categoryId)
+        {
+            var items = await _unitOfWork.FoodItems.GetAllAsync();
+            var filtered = items.Where(f => f.CategoryId == categoryId);
+
+            return filtered.Select(f => new FoodItemDTO
+            {
+                FoodId = f.FoodId,
+                FoodName = f.FoodName,
+                Description = f.Description,
+                Price = f.Price,
+                ImgUrl = f.ImgUrl,
+                Status = f.Status,
+                CreatedAt = f.CreatedAt,
+                UpdatedAt = f.UpdatedAt,
+                CategoryId = f.CategoryId,
+                CategoryName = f.Category?.Name
+            });
+        }
+
         public async Task<FoodItemDTO?> GetByIdAsync(long id)
         {
             var f = await _unitOfWork.FoodItems.GetByIdAsync(id);

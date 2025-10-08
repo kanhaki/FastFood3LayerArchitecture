@@ -130,7 +130,7 @@
         }
       }
     },
-    "/api/FoodItem": {
+    "/foods/getAllFoods": {
       "get": {
         "tags": [
           "FoodItem"
@@ -140,7 +140,32 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/foods/getFoodInfo/{id}": {
+      "get": {
+        "tags": [
+          "FoodItem"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/foods/createFood": {
       "post": {
         "tags": [
           "FoodItem"
@@ -171,28 +196,7 @@
         }
       }
     },
-    "/api/FoodItem/{id}": {
-      "get": {
-        "tags": [
-          "FoodItem"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/foods/updateFood/{id}": {
       "put": {
         "tags": [
           "FoodItem"
@@ -232,7 +236,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/foods/deleteFood/{id}": {
       "delete": {
         "tags": [
           "FoodItem"
