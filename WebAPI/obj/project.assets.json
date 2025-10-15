@@ -5019,23 +5019,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\melic\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\WebAPI.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\obj\\",
+      "projectPath": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\WebAPI.csproj",
+      "packagesPath": "C:\\Users\\melic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\melic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5050,14 +5050,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\BUS.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\BUS.csproj"
+            "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\BUS\\BUS.csproj": {
+              "projectPath": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\BUS\\BUS.csproj"
             },
-            "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\DAT.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\DAT.csproj"
+            "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\DAT\\DAT.csproj": {
+              "projectPath": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\DAT\\DAT.csproj"
             },
-            "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO.csproj"
+            "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\melic\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO.csproj"
             }
           }
         }
@@ -5072,7 +5072,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -5122,7 +5122,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
