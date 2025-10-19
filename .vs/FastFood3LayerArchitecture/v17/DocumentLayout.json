@@ -71,8 +71,7 @@
               "RelativeToolTip": "WebAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-10T18:34:14.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-10T18:34:14.448Z"
             },
             {
               "$type": "Document",
@@ -108,8 +107,7 @@
               "RelativeToolTip": "BUS\\Services\\CategoryService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAxwBkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:16:13.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-08T11:16:13.202Z"
             },
             {
               "$type": "Document",
@@ -157,7 +155,8 @@
               "RelativeToolTip": "BUS\\Services\\FoodItemService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:47:30.516Z"
+              "WhenOpened": "2025-10-08T09:47:30.516Z",
+              "EditorCaption": ""
             }
           ]
         }

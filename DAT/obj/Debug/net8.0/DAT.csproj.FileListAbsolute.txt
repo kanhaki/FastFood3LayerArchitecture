@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\bin\Debug\net8.0\DAT.deps.json
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\bin\Debug\net8.0\DAT.runtimeconfig.json
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\bin\Debug\net8.0\DAT.dll
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\bin\Debug\net8.0\DAT.pdb
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.AssemblyInfo.cs
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.sourcelink.json
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.dll
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\refint\DAT.dll
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.pdb
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\DAT.genruntimeconfig.cache
+C:\Users\User\source\repos\FastFood3LayerArchitecture\DAT\obj\Debug\net8.0\ref\DAT.dll
