@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Foodie</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="page-register">
+
+    <!-- Header include -->
+    <div id="header"></div>
+
+    <!-- Register Form -->
+    <main class="section">
+        <h2 class="section-title">Đăng ký tài khoản</h2>
+
+        <form class="form-container" id="registerForm">
+            <!-- Full Name -->
+            <input type="text" name="fullName" class="input-field" placeholder="Họ và tên" required>
+
+            <!-- Email -->
+            <input type="email" name="email" class="input-field" placeholder="Email" required>
+
+            <!-- Password -->
+            <input type="password" name="password" class="input-field" placeholder="Mật khẩu" required>
+
+            <!-- Confirm Password -->
+            <input type="password" name="confirmPassword" class="input-field" placeholder="Xác nhận mật khẩu" required>
+
+            <!-- Date of Birth -->
+            <label for="dob" style="font-size:0.9rem; color:#555; margin-top:0.5rem;">Ngày sinh</label>
+            <input type="date" name="dob" class="input-field" required>
+
+            <!-- Avatar -->
+            <label for="avatar" style="font-size:0.9rem; color:#555; margin-top:0.5rem;">Ảnh đại diện (tùy chọn)</label>
+            <input type="url" name="avatar" class="input-field" placeholder="Link ảnh đại diện">
+
+            <!-- Submit -->
+            <button type="submit" class="btn">Đăng ký</button>
+        </form>
+
+        <p class="register-footer-text">
+            Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+        </p>
+    </main>
+
+    <!-- Footer include -->
+    <div id="footer"></div>
+
+    <!-- Script load header & footer -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Load header/footer động
+        async function loadHTML(id, url) {
+          const res = await fetch(url);
+          const html = await res.text();
+          document.getElementById(id).innerHTML = html;
+        }
+        loadHTML("header", "partials/header.html");
+        loadHTML("footer", "partials/footer.html");
+    </script>
+</body>
+</html>
