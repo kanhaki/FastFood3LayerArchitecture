@@ -3,40 +3,59 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\controllers\\fooditemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\fooditemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\.nuget\\packages\\mysql.data.entityframework\\9.4.0\\contentfiles\\any\\netstandard2.1\\app.config.transform||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dto\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|solutionrelative:dto\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9427D01-2130-4B8F-851B-00118D75875E}|Common\\Common.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\common\\common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E9427D01-2130-4B8F-851B-00118D75875E}|Common\\Common.csproj|solutionrelative:common\\common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9427D01-2130-4B8F-851B-00118D75875E}|Common\\Common.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\common\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9427D01-2130-4B8F-851B-00118D75875E}|Common\\Common.csproj|solutionrelative:common\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\fooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\fooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dto\\dto\\fooditemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|solutionrelative:dto\\dto\\fooditemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\unitofwork\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\unitofwork\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\ifooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\ifooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dto\\dto\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|solutionrelative:dto\\dto\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dto\\dto\\sessioninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F66F20FD-B149-48CE-A6DC-B3FC52ACD871}|DTO\\DTO.csproj|solutionrelative:dto\\dto\\sessioninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,116 +65,188 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "test.txt",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\test.txt",
-              "RelativeDocumentMoniker": "BUS\\test.txt",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\test.txt",
-              "RelativeToolTip": "BUS\\test.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-10-15T15:13:30.223Z",
+              "DocumentIndex": 1,
+              "Title": "app.config.transform",
+              "DocumentMoniker": "C:\\Users\\User\\.nuget\\packages\\mysql.data.entityframework\\9.4.0\\contentFiles\\any\\netstandard2.1\\app.config.transform",
+              "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\mysql.data.entityframework\\9.4.0\\contentFiles\\any\\netstandard2.1\\app.config.transform",
+              "ToolTip": "C:\\Users\\User\\.nuget\\packages\\mysql.data.entityframework\\9.4.0\\contentFiles\\any\\netstandard2.1\\app.config.transform [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\mysql.data.entityframework\\9.4.0\\contentFiles\\any\\netstandard2.1\\app.config.transform [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-21T20:42:05.943Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Entity\\User.cs",
+              "RelativeDocumentMoniker": "DAT\\Entity\\User.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Entity\\User.cs",
+              "RelativeToolTip": "DAT\\Entity\\User.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:31:22.504Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "DAT\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\AppDbContext.cs",
+              "RelativeToolTip": "DAT\\AppDbContext.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA2wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:29:40.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DAT\\Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "DAT\\Repository\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:18:12.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "DAT\\UnitOfWork\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeToolTip": "DAT\\UnitOfWork\\UnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:17:39.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "DAT\\UnitOfWork\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeToolTip": "DAT\\UnitOfWork\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T20:17:01.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
               "RelativeDocumentMoniker": "WebAPI\\appsettings.json",
               "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
               "RelativeToolTip": "WebAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-10T18:34:14.448Z"
+              "WhenOpened": "2025-10-21T19:55:10.834Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoryDTO.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\CategoryDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\DTO\\CategoryDTO.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\CategoryDTO.cs",
-              "RelativeToolTip": "DTO\\DTO\\CategoryDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCAAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:21:37.376Z"
+              "WhenOpened": "2025-10-21T19:25:56.183Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:16:18.651Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\CategoryService.cs",
-              "RelativeDocumentMoniker": "BUS\\Services\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\CategoryService.cs",
-              "RelativeToolTip": "BUS\\Services\\CategoryService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwBkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:16:13.202Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FoodItemDTO.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\FoodItemDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\DTO\\FoodItemDTO.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\FoodItemDTO.cs",
-              "RelativeToolTip": "DTO\\DTO\\FoodItemDTO.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwA8AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:55:13.386Z"
+              "DocumentIndex": 2,
+              "Title": "Common",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Common\\Common.csproj",
+              "RelativeDocumentMoniker": "Common\\Common.csproj",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Common\\Common.csproj",
+              "RelativeToolTip": "Common\\Common.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-21T19:13:47.038Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FoodItemController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\FoodItemController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\FoodItemController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\FoodItemController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\FoodItemController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Common\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "Common\\JwtHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\Common\\JwtHelper.cs",
+              "RelativeToolTip": "Common\\JwtHelper.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:47:46.916Z"
+              "WhenOpened": "2025-10-21T19:01:06.182Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IFoodItemService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\IFoodItemService.cs",
-              "RelativeDocumentMoniker": "BUS\\Services\\IFoodItemService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\IFoodItemService.cs",
-              "RelativeToolTip": "BUS\\Services\\IFoodItemService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAABQAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "BUS\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\AuthService.cs",
+              "RelativeToolTip": "BUS\\Services\\AuthService.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAYwHoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:47:31.213Z"
+              "WhenOpened": "2025-10-21T18:55:42.908Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FoodItemService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\FoodItemService.cs",
-              "RelativeDocumentMoniker": "BUS\\Services\\FoodItemService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\FoodItemService.cs",
-              "RelativeToolTip": "BUS\\Services\\FoodItemService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAANAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "SessionInfo.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\SessionInfo.cs",
+              "RelativeDocumentMoniker": "DTO\\DTO\\SessionInfo.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\SessionInfo.cs",
+              "RelativeToolTip": "DTO\\DTO\\SessionInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:47:30.516Z",
+              "WhenOpened": "2025-10-21T18:55:20.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "DTO\\DTO\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\AuthResponse.cs",
+              "RelativeToolTip": "DTO\\DTO\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T18:54:28.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "BUS\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\IAuthService.cs",
+              "RelativeToolTip": "BUS\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T18:53:57.918Z",
               "EditorCaption": ""
             }
           ]

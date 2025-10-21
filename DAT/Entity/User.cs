@@ -26,7 +26,7 @@ namespace DAT.Entity
         [Required, MaxLength(20)]
         public string Role { get; set; } // enum: customer, admin, staff
 
-        public string AvatarUrl { get; set; }
+        public string? AvatarUrl { get; set; }
         public bool IsActive { get; set; } = true;
 
         public DateTime CreatedAt { get; set; }
