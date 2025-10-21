@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\dat\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D675BD3-C0F8-4CA3-AEC8-326DE440CF74}|DAT\\DAT.csproj|solutionrelative:dat\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\bus\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55000F0F-DA8D-4B20-92DF-51ABC665C7B3}|BUS\\BUS.csproj|solutionrelative:bus\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{63FCD772-1EDC-459E-86B1-DC796776D122}|WebAPI\\WebAPI.csproj|c:\\users\\user\\source\\repos\\fastfood3layerarchitecture\\webapi\\controllers\\fooditemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,31 +47,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "test.txt",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\test.txt",
-              "RelativeDocumentMoniker": "BUS\\test.txt",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\test.txt",
-              "RelativeToolTip": "BUS\\test.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-10-15T15:13:30.223Z",
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Entity\\User.cs",
+              "RelativeDocumentMoniker": "DAT\\Entity\\User.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DAT\\Entity\\User.cs",
+              "RelativeToolTip": "DAT\\Entity\\User.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA3wCQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T21:28:13.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "WebAPI\\appsettings.json",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\appsettings.json",
-              "RelativeToolTip": "WebAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-10T18:34:14.448Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "CategoryDTO.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\CategoryDTO.cs",
               "RelativeDocumentMoniker": "DTO\\DTO\\CategoryDTO.cs",
@@ -87,7 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\CategoryController.cs",
@@ -111,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "FoodItemDTO.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\DTO\\DTO\\FoodItemDTO.cs",
               "RelativeDocumentMoniker": "DTO\\DTO\\FoodItemDTO.cs",
@@ -123,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "FoodItemController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\WebAPI\\Controllers\\FoodItemController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\FoodItemController.cs",
@@ -135,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "IFoodItemService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\IFoodItemService.cs",
               "RelativeDocumentMoniker": "BUS\\Services\\IFoodItemService.cs",
@@ -147,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "FoodItemService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FastFood3LayerArchitecture\\BUS\\Services\\FoodItemService.cs",
               "RelativeDocumentMoniker": "BUS\\Services\\FoodItemService.cs",
@@ -155,8 +139,7 @@
               "RelativeToolTip": "BUS\\Services\\FoodItemService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T09:47:30.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-08T09:47:30.516Z"
             }
           ]
         }
