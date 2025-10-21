@@ -1,9 +1,10 @@
 ﻿using BUS.Services;
+using DAT;
 using DAT.Repository;
+using DAT.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
-using DAT;
-using DAT.UnitOfWork;
+using WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,19 +25,18 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    new MySqlServerVersion(new Version(10, 4, 32)))); // thay version đúng với MySQL bạn cài
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-
-
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    new MySqlServerVersion(new Version(10, 4, 32)))); // thay version đúng với MySQL bạn cài
 
 
 var app = builder.Build();
@@ -47,6 +47,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<SessionTokenMiddleware>();
 
 app.UseHttpsRedirection();
 
