@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+﻿using GUI.Models;
+>>>>>>> master
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using GUI.Models;
@@ -44,3 +48,4 @@ namespace GUI.Controllers
         }
     }
 }
+//Đã chỉnh sửa
