@@ -1,13 +1,16 @@
-using GUI.Models;
+<<<<<<< HEAD
+=======
+﻿using GUI.Models;
+>>>>>>> master
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using GUI.Models;
 
 namespace GUI.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -23,6 +26,21 @@ namespace GUI.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View("~/Views/Login/Index.cshtml");
+        }
+
+        public IActionResult Registry()
+        {
+            return View("~/Views/Registry/Index.cshtml");
+        }
+
+        public IActionResult Reservation()
+        {
+            return View("~/Views/Reservation/Index.cshtml");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -30,3 +48,4 @@ namespace GUI.Controllers
         }
     }
 }
+//Đã chỉnh sửa
