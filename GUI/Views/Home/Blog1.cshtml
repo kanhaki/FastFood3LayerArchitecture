@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Cheese Pizza Recipe";
+}
+
+<section class="section blog-detail">
+
+    <!-- Ảnh chính full width -->
+    <div class="blog-hero">
+        <img src="/images/blog-1.jpg" alt="Cheese Pizza" />
+    </div>
+
+    <!-- Phần nội dung vẫn trong container -->
+    <div class="container">
+
+        <h1 class="section-title">What Do You Think About Cheese Pizza Recipes?</h1>
+        <p class="blog-meta"><strong>Author:</strong> Jonathan Smith | <strong>Date:</strong> Jan 01 2022</p>
+
+        <div class="badge mb-3">Pizza</div>
+
+        <div class="blog-content">
+            <p>
+                Financial experts support or help you to find out which way you can raise your funds more...
+            </p>
+
+            <h2>Ingredients</h2>
+            <ul>
+                <li>200g pizza dough</li>
+                <li>100g mozzarella cheese</li>
+                <li>50g tomato sauce</li>
+                <li>Olive oil, salt, pepper</li>
+            </ul>
+
+            <h2>Steps</h2>
+            <ol>
+                <li>Preheat the oven to 220°C.</li>
+                <li>Roll out the pizza dough to the desired thickness.</li>
+                <li>Spread tomato sauce evenly on the dough.</li>
+                <li>Sprinkle mozzarella cheese and add toppings if desired.</li>
+                <li>Bake for 12–15 minutes until golden and bubbly.</li>
+                <li>Remove from oven, drizzle olive oil, slice, and serve hot.</li>
+            </ol>
+
+            <div class="blog-image">
+                <img src="/images/pizza-step1.jpg" alt="Step 1" class="mb-3" />
+                <img src="/images/pizza-step2.jpg" alt="Step 2" class="mb-3" />
+            </div>
+
+            <p>
+                Enjoy your homemade cheese pizza! You can experiment with different cheeses, herbs, and toppings to suit your taste.
+            </p>
+        </div>
+
+        <div class="blog-tags mt-3">
+            <span class="badge">Pizza</span>
+            <span class="badge">Cheese</span>
+            <span class="badge">Quick Recipe</span>
+        </div>
+
+        <div class="blog-navigation mt-4">
+            <a asp-action="Index" class="btn-link">Back to Home</a>
+            <a asp-action="Blog2" class="btn-link">Next Blog →</a>
+        </div>
+    </div>
+</section>
