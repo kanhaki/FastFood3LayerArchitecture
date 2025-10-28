@@ -1,0 +1,26 @@
+﻿@* Layout cho Admin Dashboard *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Foodie Admin</title>
+    <link rel="stylesheet" href="~/css/admin-dashboard.css" />
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        @* Sidebar Partial *@
+        @await Html.PartialAsync("_AdminSidebar")
+
+        <div class="main-content">
+            @* Top Header Partial *@
+            @await Html.PartialAsync("_AdminTopHeader")
+
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GUI</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css">
 </head>
 <body>
@@ -13,11 +13,11 @@
             <h1><a href="@Url.Action("Index", "Home")" class="logo">Foodie</a></h1>
             <nav class="navbar" data-navbar>
                 <ul class="navbar-list">
-                    <li><a href="~/#home" class="navbar-link" data-nav-link>Home</a></li>
-                    <li><a href="~/#about" class="navbar-link" data-nav-link>About</a></li>
-                    <li><a href="~/#food-menu" class="navbar-link" data-nav-link>Shop</a></li>
-                    <li><a href="~/#blog" class="navbar-link" data-nav-link>Blog</a></li>
-                    <li><a href="~/#contact" class="navbar-link" data-nav-link>Contact</a></li>
+                    <li><a href="/#home" class="navbar-link" data-nav-link>Home</a></li>
+                    <li><a href="/#about" class="navbar-link" data-nav-link>About</a></li>
+                    <li><a href="/#food-menu" class="navbar-link" data-nav-link>Shop</a></li>
+                    <li><a href="/#blog" class="navbar-link" data-nav-link>Blog</a></li>
+                    <li><a href="/#contact" class="navbar-link" data-nav-link>Contact</a></li>
                 </ul>
             </nav>
             <div class="header-btn-group">
@@ -44,7 +44,7 @@
 
     <footer class="footer">
 
-        <div class="footer-top" style="background-image: url('./assets/images/footer-illustration.png')">
+        <div class="footer-top" style="background-image: url('/images/footer-illustration.png')">
             <div class="container">
 
                 <div class="footer-brand">
@@ -129,14 +129,8 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/script.js" asp-append-version="true"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            initHeaderInteractions();
-        });
-    </script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/js/script.js" ></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt bàn - Foodie</title>
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- Ionicons nếu cần -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -70,26 +70,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <div id="footer"></div>
-
-    <!-- Script load header/footer & xử lý form -->
-    <script>
+    <script src=/js/script.js"></script>
+     <script>
         document.addEventListener("DOMContentLoaded", () => {
-
-          // ===== Load header/footer =====
-          async function loadHTML(id, url) {
-            try {
-              const res = await fetch(url);
-              if (!res.ok) throw new Error("HTTP error " + res.status);
-              const html = await res.text();
-              document.getElementById(id).innerHTML = html;
-            } catch (err) {
-              console.error("Load " + id + " failed:", err);
-            }
-          }
-          loadHTML("header", "partials/header.html");
-          loadHTML("footer", "partials/footer.html");
 
           // const userLogin = null; // bật dòng này để test chưa đăng nhập
 

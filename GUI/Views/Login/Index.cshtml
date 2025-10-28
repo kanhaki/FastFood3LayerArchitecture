@@ -7,12 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - Foodie</title>
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="page-login">
-
-    <!-- Header load động -->
-    <div id="header"></div>
 
     <!-- Main login section -->
     <main class="section">
@@ -27,20 +24,10 @@
         </p>
     </main>
 
-    <!-- Footer load động -->
-    <div id="footer"></div>
+ 
 
-    <script src="assets/js/main.js"></script>
+    <script src="/js/script.js"></script>
     <script>
-        // Load header/footer động
-        async function loadHTML(id, url) {
-          const res = await fetch(url);
-          const html = await res.text();
-          document.getElementById(id).innerHTML = html;
-        }
-        loadHTML("header", "partials/header.html");
-        loadHTML("footer", "partials/footer.html");
-
         // Handle login form
         document.getElementById("loginForm").addEventListener("submit", async (e) => {
           e.preventDefault();

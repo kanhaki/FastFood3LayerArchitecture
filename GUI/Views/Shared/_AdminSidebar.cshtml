@@ -1,0 +1,51 @@
+﻿@* Partial View: Sidebar Admin *@
+<div class="sidebar">
+    <div class="foodie-logo">Foodie Admin</div>
+
+    <ul class="nav-list">
+        <li>
+            <a asp-controller="Admin" asp-action="Dashboard" class="nav-item active">
+                <i class="icon-dashboard"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Orders" class="nav-item">
+                <i class="icon-orders"></i> Quản lý Đơn hàng
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Menu" class="nav-item">
+                <i class="icon-menu"></i> Quản lý Thực đơn
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Customers" class="nav-item">
+                <i class="icon-users"></i> Quản lý Khách hàng
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Reservations" class="nav-item">
+                <i class="icon-reservation"></i> Quản lý Đặt bàn
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Reports" class="nav-item">
+                <i class="icon-stats"></i> Báo cáo & Thống kê
+            </a>
+        </li>
+        <li class="spacer"></li>
+        <li>
+            <a asp-controller="Admin" asp-action="Setting" class="nav-item settings">
+                <i class="icon-settings"></i> Cài đặt
+            </a>
+        </li>
+    </ul>
+
+    <div class="admin-profile">
+        <img src="/images/admin-avatar.png" alt="Admin Avatar">
+        <div>
+            <div class="admin-name">Admin Name</div>
+            <small>Quản trị viên</small>
+        </div>
+    </div>
+</div>
