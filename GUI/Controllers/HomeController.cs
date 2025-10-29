@@ -16,38 +16,6 @@ namespace GUI.Controllers
         // Trang Home/Index
         public IActionResult Index()
         {
-            // Dữ liệu bài viết tĩnh
-            ViewBag.Blogs = new[]
-            {
-                new { Id = 1, Title="Cheese Pizza", Category="Pizza", Image="~/images/blog-1.jpg", Summary="Financial experts support ...", Author="Jonathan Smith", Date="Jan 01 2022", Content="Nội dung đầy đủ bài Cheese Pizza..." },
-                new { Id = 2, Title="Chicken Strips", Category="Burger", Image="~/images/blog-2.jpg", Summary="Financial experts support ...", Author="Jonathan Smith", Date="Jan 02 2022", Content="Nội dung đầy đủ bài Chicken Strips..." },
-                new { Id = 3, Title="Hot Pasta", Category="Chicken", Image="~/images/blog-3.jpg", Summary="Financial experts support ...", Author="Jonathan Smith", Date="Jan 03 2022", Content="Nội dung đầy đủ bài Hot Pasta..." }
-            };
-
-            return View();
-        }
-
-        // Chi tiết bài viết
-        public IActionResult BlogDetails(int id)
-        {
-            var blogs = (dynamic[])ViewBag.Blogs; // Lấy mảng bài viết
-            var blog = blogs.FirstOrDefault(b => b.Id == id);
-            if (blog == null) return NotFound();
-            return View(blog); // Truyền dữ liệu bài viết cho view Details
-        }
-
-        public IActionResult Blog1()
-        {
-            return View();
-        }
-
-        public IActionResult Blog2()
-        {
-            return View();
-        }
-
-        public IActionResult Blog3()
-        {
             return View();
         }
 
