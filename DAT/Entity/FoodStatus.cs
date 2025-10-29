@@ -8,21 +8,16 @@ using System.Threading.Tasks;
 
 namespace DAT.Entity
 {
-    [Table("Category")]
-    public class Category
+    [Table("FoodStatus")]
+    public class FoodStatus
     {
         [Key]
-        public int CategoryID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int StatusID { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string Name { get; set; }
-
-        [StringLength(500)]
-        public string Description { get; set; }
-
-        [StringLength(512)]
-        public string ImageURL { get; set; }
+        [StringLength(50)]
+        public string StatusName { get; set; }
 
         // Navigation property
         public virtual ICollection<FoodItem> FoodItems { get; set; } = new List<FoodItem>();

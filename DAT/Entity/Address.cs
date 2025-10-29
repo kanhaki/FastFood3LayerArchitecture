@@ -1,27 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAT.Entity
 {
+    [Table("Address")]
     public class Address
     {
         [Key]
-        public long AddrId { get; set; }
+        public int AdrsID { get; set; }
 
-        [Required, MaxLength(255)]
-        public string AddressName { get; set; }
+        [StringLength(255)]
+        public string AdrsCustomerName { get; set; }
 
-        public string AddressLine { get; set; }
+        [Required]
+        [StringLength(500)]
+        public string AdrsLine { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public string Phone { get; set; }
 
-        public bool IsDefault { get; set; }
+        public bool? IsDefault { get; set; }
 
-        // FK
-        public long UserId { get; set; }
-        public User User { get; set; }
+        public int UserID { get; set; }
+
+        // Navigation property: Mối quan hệ với User
+        [ForeignKey("UserID")]
+        public virtual User User { get; set; }
+
+        // Navigation property: Một địa chỉ được dùng cho nhiều đơn hàng
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

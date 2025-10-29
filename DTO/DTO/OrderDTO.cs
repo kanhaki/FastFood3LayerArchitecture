@@ -8,14 +8,19 @@ namespace DTO.DTO
 {
     public class OrderDTO
     {
-        public long OrderId { get; set; }
-        public long UserId { get; set; }
-        public long AdrsId { get; set; }
+        public int OrderID { get; set; }
+        public int UserID { get; set; }
+        public int AdrsID { get; set; }
+
+        public int RestaurantID { get; set; }
+
         public DateTime OrderTime { get; set; }
-        public string Status { get; set; } = "Pending";
+
+        public int StatusID { get; set; }       
+        public string StatusName { get; set; } = "Pending";
+
         public int TotalAmount { get; set; }
-        public long? PromoId { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; } // SỬA: cho phép null
 
         public List<OrderItemDTO> Items { get; set; } = new();
     }

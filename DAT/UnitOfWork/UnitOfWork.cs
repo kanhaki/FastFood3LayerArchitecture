@@ -13,6 +13,8 @@ namespace DAT.UnitOfWork
         private readonly AppDbContext _context;
         private readonly Dictionary<Type, object> _repos = new();
         private IUserRepository? _userRepo;
+        private IFoodItemRepository? _foodItemRepo;
+        private IOrderRepository? _orderRepo;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -21,7 +23,9 @@ namespace DAT.UnitOfWork
 
         public IUserRepository Users => _userRepo ??= new UserRepository(_context);
         public IGenericRepository<Category> Categories => Repository<Category>();
-        public IGenericRepository<FoodItem> FoodItems => Repository<FoodItem>();
+        public IOrderRepository Orders => _orderRepo ??= new OrderRepository(_context);
+        public IFoodItemRepository FoodItems => _foodItemRepo ??= new FoodItemRepository(_context);
+        public IGenericRepository<UserRole> UserRoles => Repository<UserRole>();
         public IGenericRepository<T> Repository<T>() where T : class
         {
             var type = typeof(T);

@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+// using static System.Runtime.InteropServices.JavaScript.JSType; // <-- Xóa dòng này, không cần thiết
 
 namespace Common
 {
@@ -14,12 +14,16 @@ namespace Common
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.UtcNow.AddMinutes(int.Parse(jwtSection["ExpiryMinutes"]));
+
             var claims = new[]
             {
-            new Claim("sub", user.UserId.ToString()),
-            new Claim("email", user.Email),
-            new Claim(ClaimTypes.Role, user.Role)
-        };
+                new Claim("sub", user.UserID.ToString()),
+                new Claim("email", user.Email),
+                
+                // --- THAY ĐỔI Ở ĐÂY ---
+                // CŨ: new Claim(ClaimTypes.Role, user.Role) 
+                new Claim(ClaimTypes.Role, user.UserRole.RoleName) // MỚI
+            };
 
             var token = new JwtSecurityToken(
                 issuer: jwtSection["Issuer"],
@@ -30,6 +34,8 @@ namespace Common
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        // --- Các hàm còn lại không cần sửa ---
 
         public static DateTime GetExpiryFromSettings(IConfigurationSection jwtSection)
         {
@@ -67,5 +73,4 @@ namespace Common
             }
         }
     }
-
 }

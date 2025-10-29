@@ -12,7 +12,9 @@ namespace DAT.UnitOfWork
     {
         IUserRepository Users { get; }
         IGenericRepository<Category> Categories { get; }
-        IGenericRepository<FoodItem> FoodItems { get; }
+        IOrderRepository Orders { get; }
+        IFoodItemRepository FoodItems { get; }
+        IGenericRepository<UserRole> UserRoles { get; }
         IGenericRepository<T> Repository<T>() where T : class;
         Task<int> SaveChangesAsync(CancellationToken ct = default);
     }

@@ -1,24 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAT.Entity
 {
+    [Table("OrderItem")]
     public class OrderItem
     {
-        [Key]
-        public long OrderItemId { get; set; }
+        // Đây là KHÓA CHÍNH PHỨC HỢP (Composite Key)
+        // Bạn phải định nghĩa nó trong AppDbContext dùng Fluent API
+        // .HasKey(oi => new { oi.OrderID, oi.FoodID });
 
-        public long OrderId { get; set; }
-        public Order Order { get; set; }
+        public int OrderID { get; set; }
+        public int FoodID { get; set; }
 
-        public long FoodId { get; set; }
-        public FoodItem FoodItem { get; set; }
-
+        [Required]
         public int Quantity { get; set; }
-        public int UnitPrice { get; set; }
+
+        [Required]
+        public int Price { get; set; } // Giá tại thời điểm mua
+
+        // Navigation properties
+        [ForeignKey("OrderID")]
+        public virtual Order Order { get; set; }
+
+        [ForeignKey("FoodID")]
+        public virtual FoodItem FoodItem { get; set; }
     }
 }

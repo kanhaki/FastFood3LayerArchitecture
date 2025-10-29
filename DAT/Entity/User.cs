@@ -1,42 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAT.Entity
 {
+    [Table("User")] // Bắt buộc dùng [Table] vì "User" là từ khóa SQL
     public class User
     {
         [Key]
-        public long UserId { get; set; }
+        public int UserID { get; set; }
 
-        [Required, MaxLength(255)]
+        [StringLength(255)]
         public string FullName { get; set; }
 
-        [Required, MaxLength(255)]
+        [Required]
+        [StringLength(255)]
         public string Email { get; set; }
 
-        [Required, MaxLength(255)]
+        [Required]
+        [StringLength(255)]
         public string PasswordHash { get; set; }
 
-        public DateOnly? DOB { get; set; }
+        public DateTime? DOB { get; set; } // Dùng DateTime? cho cột DATE (cho phép null)
 
-        [Required, MaxLength(20)]
-        public string Role { get; set; } // enum: customer, admin, staff
+        public int RoleID { get; set; }
 
-        public string? AvatarUrl { get; set; }
-        public bool IsActive { get; set; } = true;
+        [StringLength(512)]
+        public string AvatarURL { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        // Navigation
-        public ICollection<Address> Addresses { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
-        public ICollection<BlogPost> BlogPosts { get; set; }
-        public ICollection<Review> Reviews { get; set; }
+        // Navigation property: Mối quan hệ với UserRole
+        [ForeignKey("RoleID")]
+        public virtual UserRole UserRole { get; set; }
+
+        // Navigation property: Một người dùng có nhiều địa chỉ
+        public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
+
+        // Navigation property: Một Manager (User) quản lý nhiều nhà hàng
+        public virtual ICollection<Restaurant> Restaurants { get; set; } = new List<Restaurant>();
+
+        // Navigation property: Một người dùng có nhiều đơn hàng
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

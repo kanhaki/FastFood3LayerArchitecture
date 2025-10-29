@@ -8,10 +8,8 @@ namespace DTO.DTO
 {
     public class OrderItemDTO
     {
-        public long OrderItemId { get; set; }
-        public long FoodId { get; set; }
+        public int FoodID { get; set; } // SỬA: long -> int, FoodId -> FoodID
         public int Quantity { get; set; }
-        public int UnitPrice { get; set; }
+        public int Price { get; set; }
     }
-
 }

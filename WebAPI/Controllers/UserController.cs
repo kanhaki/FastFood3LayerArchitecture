@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO userDto)
         {
-            if (id != userDto.UserId) return BadRequest("User ID mismatch");
+            if (id != userDto.UserID) return BadRequest("User ID mismatch");
 
             await _userService.UpdateUserAsync(userDto);
             return Ok(new { message = "User updated successfully" });

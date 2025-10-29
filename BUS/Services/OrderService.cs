@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore; // Cần dùng
 
 namespace BUS.Services
 {
@@ -20,100 +21,139 @@ namespace BUS.Services
 
         public async Task<IEnumerable<OrderDTO>> GetAllAsync()
         {
-            var orders = await _unitOfWork.Repository<Order>().GetAllAsync();
+            // SỬA: Dùng Repository chuyên dụng
+            var orders = await _unitOfWork.Orders.GetAllWithDetailsAsync();
+
             return orders.Select(o => new OrderDTO
             {
-                OrderId = o.OrderId,
-                UserId = o.UserId,
-                AdrsId = o.AddrId,
+                OrderID = o.OrderID,
+                UserID = o.UserID,
+                AdrsID = o.AdrsID,
+                RestaurantID = o.RestaurantID,
                 OrderTime = o.OrderTime,
-                Status = o.Status,
+                StatusID = o.StatusID,
+                StatusName = o.OrderStatus?.StatusName, // Sẽ có dữ liệu
                 TotalAmount = o.TotalAmount,
-                PromoId = o.PromoId,
                 UpdatedAt = o.UpdatedAt,
+                Items = o.OrderItems.Select(i => new OrderItemDTO
+                {
+                    FoodID = i.FoodID,
+                    Quantity = i.Quantity,
+                    Price = i.Price
+                }).ToList()
             });
         }
 
-        public async Task<OrderDTO?> GetByIdAsync(long id)
+        public async Task<OrderDTO?> GetByIdAsync(int id) // SỬA: long -> int
         {
-            var order = await _unitOfWork.Repository<Order>().GetByIdAsync(id);
-            if (order == null) return null;
+            // SỬA: Dùng Repository chuyên dụng
+            var o = await _unitOfWork.Orders.GetByIdWithDetailsAsync(id);
+            if (o == null) return null;
 
             return new OrderDTO
             {
-                OrderId = order.OrderId,
-                UserId = order.UserId,
-                AdrsId = order.AddrId,
-                OrderTime = order.OrderTime,
-                Status = order.Status,
-                TotalAmount = order.TotalAmount,
-                PromoId = order.PromoId,
-                Items = order.OrderItems.Select(i => new OrderItemDTO
+                OrderID = o.OrderID,
+                UserID = o.UserID,
+                AdrsID = o.AdrsID,
+                RestaurantID = o.RestaurantID,
+                OrderTime = o.OrderTime,
+                StatusID = o.StatusID,
+                StatusName = o.OrderStatus?.StatusName, // Sẽ có dữ liệu
+                TotalAmount = o.TotalAmount,
+                UpdatedAt = o.UpdatedAt,
+                Items = o.OrderItems.Select(i => new OrderItemDTO // Sẽ có dữ liệu
                 {
-                    OrderItemId = i.OrderItemId,
-                    FoodId = i.FoodId,
+                    FoodID = i.FoodID,
                     Quantity = i.Quantity,
-                    UnitPrice = i.UnitPrice
+                    Price = i.Price // SỬA: UnitPrice -> Price
                 }).ToList(),
-                UpdatedAt = order.UpdatedAt,
             };
         }
 
-        public async Task<long> CreateAsync(OrderDTO dto)
+        public async Task<int> CreateAsync(OrderDTO dto) // SỬA: long -> int
         {
+            // --- SỬA LOGIC: Lấy StatusID từ tên "Pending" ---
+            var pendingStatus = (await _unitOfWork.Repository<OrderStatus>()
+                                .FindAsync(s => s.StatusName == "Pending"))
+                                .FirstOrDefault();
+
+            if (pendingStatus == null)
+            {
+                // Nếu chưa có Status "Pending", tạo nó (hoặc báo lỗi)
+                // Tạm thời, giả sử ID của "Pending" là 1
+                // throw new Exception("OrderStatus 'Pending' not found.");
+                pendingStatus = new OrderStatus { StatusID = 1, StatusName = "Pending" }; // Cẩn thận!
+            }
+
             // Tính tổng tiền
             int total = 0;
             foreach (var item in dto.Items)
             {
-                var food = await _unitOfWork.Repository<FoodItem>().GetByIdAsync(item.FoodId);
-                if (food == null) throw new Exception("Food item not found");
+                // SỬA: Dùng Repository chuyên dụng
+                var food = await _unitOfWork.FoodItems.GetByIdAsync(item.FoodID);
+                if (food == null) throw new Exception($"Food item not found: {item.FoodID}");
 
-                item.UnitPrice = food.Price;
+                item.Price = food.Price; // Gán giá đúng vào DTO
                 total += food.Price * item.Quantity;
             }
 
             var order = new Order
             {
-                UserId = dto.UserId,
-                AddrId = dto.AdrsId,
+                UserID = dto.UserID,
+                AdrsID = dto.AdrsID,
+                RestaurantID = dto.RestaurantID, // THÊM
                 OrderTime = DateTime.UtcNow,
-                Status = "Pending",
+                StatusID = pendingStatus.StatusID, // SỬA: Dùng ID
                 TotalAmount = total,
-                PromoId = dto.PromoId,
+                // PromoId = dto.PromoId, // XÓA
                 OrderItems = dto.Items.Select(i => new OrderItem
                 {
-                    FoodId = i.FoodId,
+                    FoodID = i.FoodID,
                     Quantity = i.Quantity,
-                    UnitPrice = i.UnitPrice
+                    Price = i.Price // SỬA: UnitPrice -> Price
                 }).ToList(),
+                CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
             };
 
-            await _unitOfWork.Repository<Order>().AddAsync(order);
+            // SỬA: Dùng Repository chuyên dụng
+            await _unitOfWork.Orders.AddAsync(order);
             await _unitOfWork.SaveChangesAsync();
 
-            return order.OrderId;
+            return order.OrderID;
         }
 
-        public async Task UpdateStatusAsync(long orderId, string status)
+        public async Task UpdateStatusAsync(int orderId, string status) // SỬA: long -> int
         {
-            var order = await _unitOfWork.Repository<Order>().GetByIdAsync(orderId);
-            if (order == null) throw new Exception("Order not found");
+            // SỬA LOGIC: Phải tìm ID từ tên status
+            var statusEntity = (await _unitOfWork.Repository<OrderStatus>()
+                                .FindAsync(s => s.StatusName == status))
+                                .FirstOrDefault();
 
-            order.Status = status;
-            _unitOfWork.Repository<Order>().Update(order);
+            if (statusEntity == null)
+                throw new Exception($"Status '{status}' not found.");
+
+            var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
+            if (order == null)
+                throw new Exception("Order not found");
+
+            order.StatusID = statusEntity.StatusID; // SỬA
+            order.UpdatedAt = DateTime.UtcNow;
+
+            _unitOfWork.Orders.Update(order);
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(int id) // SỬA: long -> int
         {
-            var order = await _unitOfWork.Repository<Order>().GetByIdAsync(id);
+            var order = await _unitOfWork.Orders.GetByIdAsync(id);
             if (order == null) return false;
 
-            _unitOfWork.Repository<Order>().Remove(order);
+            // Cẩn thận: Xóa Order thường phải xóa OrderItem trước
+            // Nhưng nếu CSDL cài "ON DELETE CASCADE" thì EF Core sẽ tự xử lý
+            _unitOfWork.Orders.Remove(order);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }
     }
-
 }

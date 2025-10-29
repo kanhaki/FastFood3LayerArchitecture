@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
 
         // GET /foods/getFoodsByCategory/{categoryId}
         [HttpGet("getFoodsByCategory/{categoryId}")]
-        public async Task<IActionResult> GetByCategory(long categoryId)
+        public async Task<IActionResult> GetByCategory(int categoryId)
         {
             var items = await _service.GetFoodsByCategoryAsync(categoryId);
             if (!items.Any())
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
 
         // GET /foods/getFoodInfo/{id}
         [HttpGet("getFoodInfo/{id}")]
-        public async Task<IActionResult> GetById(long id)
+        public async Task<IActionResult> GetById(int id)
         {
             var item = await _service.GetByIdAsync(id);
             if (item == null)
@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
 
         // PUT /foods/updateFood/{id}
         [HttpPut("updateFood/{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] FoodItemDTO dto)
+        public async Task<IActionResult> Update(int id, [FromBody] FoodItemDTO dto)
         {
             if (id != dto.FoodId)
                 return BadRequest(new { error = "ID không khớp với dữ liệu gửi lên", code = 400 });
@@ -72,7 +72,7 @@ namespace WebAPI.Controllers
 
         // DELETE /foods/deleteFood/{id}
         [HttpDelete("deleteFood/{id}")]
-        public async Task<IActionResult> Delete(long id)
+        public async Task<IActionResult> Delete(int id)
         {
             var result = await _service.DeleteAsync(id);
             if (!result)

@@ -10,6 +10,8 @@ namespace DAT.Repository
     public interface IUserRepository : IGenericRepository<User>
     {
         Task<User?> GetByEmailAsync(string email, CancellationToken ct = default);
-        Task<User?> GetByIdWithAddressesAsync(long id, CancellationToken ct = default); // example include
+        Task<User?> GetByIdWithAddressesAsync(int id, CancellationToken ct = default); // example include
+        Task<IEnumerable<User>> GetAllWithRolesAsync(CancellationToken ct = default);
+        Task<User?> GetByIdWithRoleAsync(int id, CancellationToken ct = default);
     }
 }

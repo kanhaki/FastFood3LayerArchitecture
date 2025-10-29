@@ -22,10 +22,10 @@ namespace BUS.Services
             var categories = await _unitOfWork.Categories.GetAllAsync();
             return categories.Select(c => new CategoryDTO
             {
-                CategoryId = c.CategoryId,
+                CategoryId = c.CategoryID,
                 Name = c.Name,
                 Description = c.Description,
-                ImgUrl = c.ImgUrl
+                ImgUrl = c.ImageURL
             });
         }
 
@@ -35,10 +35,10 @@ namespace BUS.Services
             if (c == null) return null;
             return new CategoryDTO
             {
-                CategoryId = c.CategoryId,
+                CategoryId = c.CategoryID,
                 Name = c.Name,
                 Description = c.Description,
-                ImgUrl = c.ImgUrl
+                ImgUrl = c.ImageURL
             };
         }
 
@@ -48,7 +48,7 @@ namespace BUS.Services
             {
                 Name = dto.Name,
                 Description = dto.Description,
-                ImgUrl = dto.ImgUrl
+                ImageURL = dto.ImgUrl
             };
             await _unitOfWork.Categories.AddAsync(entity);
             await _unitOfWork.SaveChangesAsync();
@@ -61,7 +61,7 @@ namespace BUS.Services
 
             entity.Name = dto.Name;
             entity.Description = dto.Description;
-            entity.ImgUrl = dto.ImgUrl;
+            entity.ImageURL = dto.ImgUrl;
 
             _unitOfWork.Categories.Update(entity);
             await _unitOfWork.SaveChangesAsync();
