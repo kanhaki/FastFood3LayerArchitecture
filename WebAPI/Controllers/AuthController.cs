@@ -2,6 +2,7 @@
 using DTO.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
@@ -19,7 +20,12 @@ namespace WebAPI.Controllers
             try
             {
                 var id = await _auth.SignUpAsync(req);
-                return Created("", new { userId = id });
+                return CreatedAtAction(
+                "GetUserById", // Tên Action (trong UserController)
+                "User",    // Tên Controller
+                new { id = id }, // Tham số cho Action
+                new { UserID = id } // Body trả về
+            );
             }
             catch (ArgumentException ex) { return BadRequest(new { error = ex.Message }); }
             catch (InvalidOperationException ex) { return Conflict(new { error = ex.Message }); }
@@ -32,9 +38,29 @@ namespace WebAPI.Controllers
             try
             {
                 var res = await _auth.LoginAsync(req);
-                var cookieOptions = new CookieOptions { HttpOnly = true, Secure = true, Expires = res.ExpiresAt, SameSite = SameSiteMode.Strict };
-                Response.Cookies.Append("access_token", res.Token, cookieOptions);
-                return Ok(new { userId = res.UserId });
+
+                // Tạo cookie cho Access Token
+                var accessCookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = res.ExpiresAt, // Hết hạn theo vé
+                    SameSite = SameSiteMode.Strict
+                };
+                Response.Cookies.Append("access_token", res.Token, accessCookieOptions);
+
+                // Tạo cookie cho Refresh Token
+                var refreshCookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddDays(7), // Hết hạn 7 ngày
+                    SameSite = SameSiteMode.Strict,
+                    Path = "/auth" // Chỉ gửi cookie này khi gọi /auth
+                };
+                Response.Cookies.Append("refresh_token", res.RefreshToken, refreshCookieOptions);
+
+                return Ok(new { UserID = res.UserID });
             }
             catch (ArgumentException ex) { return BadRequest(new { error = ex.Message }); }
             catch (UnauthorizedAccessException ex) { return Unauthorized(new { error = ex.Message }); }
@@ -45,19 +71,75 @@ namespace WebAPI.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            var token = Request.Cookies["access_token"];
-            await _auth.LogoutAsync(token ?? string.Empty);
+            // Lấy UserID từ token
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _auth.LogoutAsync(userId);
+
+            // Xóa cả 2 cookie ở phía client
             Response.Cookies.Delete("access_token");
-            return Ok(new { message = "Logged out" });
+            Response.Cookies.Delete("refresh_token", new CookieOptions { Path = "/auth" });
+
+            return NoContent();
         }
 
-        [HttpPost("session")]
-        public async Task<IActionResult> Session()
+        [HttpGet("session")]
+        [Authorize]
+        public IActionResult GetSessionInfo()
         {
-            var token = Request.Cookies["access_token"];
-            var info = await _auth.ValidateTokenAsync(token ?? string.Empty);
-            if (info == null) return Unauthorized(new { error = "No active session" });
+            var expClaim = User.FindFirstValue("exp");
+            var expiresAt = DateTime.UnixEpoch; // Giá trị mặc định
+            if (long.TryParse(expClaim, out long expSeconds))
+            {
+                expiresAt = DateTimeOffset.FromUnixTimeSeconds(expSeconds).UtcDateTime;
+            }
+
+            var info = new SessionInfo
+            {
+                UserID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                Email = User.FindFirstValue(ClaimTypes.Email),
+                Role = User.FindFirstValue(ClaimTypes.Role),
+                ExpiresAt = expiresAt
+            };
+
+            if (info.UserID == 0)
+            {
+                return Unauthorized();
+            }
+
             return Ok(info);
+        }
+        
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh()
+        {
+            // Đọc Refresh Token từ cookie
+            var refreshToken = Request.Cookies["refresh_token"];
+            if (string.IsNullOrEmpty(refreshToken))
+                return Unauthorized(new { error = "Missing refresh token." });
+
+            try
+            {
+                // Gọi Service để lấy Access Token MỚI
+                var res = await _auth.RefreshTokenAsync(refreshToken);
+
+                // Cấp Access Token MỚI
+                var accessCookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = res.ExpiresAt,
+                    SameSite = SameSiteMode.Strict
+                };
+                Response.Cookies.Append("access_token", res.Token, accessCookieOptions);
+
+                return Ok(new { UserID = res.UserID });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                // Xóa luôn cookie refresh nếu nó tào lao
+                Response.Cookies.Delete("refresh_token");
+                return Unauthorized(new { error = ex.Message });
+            }
         }
     }
 }

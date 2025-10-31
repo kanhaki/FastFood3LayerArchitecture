@@ -1,11 +1,13 @@
 ﻿using BUS.Services;
 using DTO.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("orders")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _service;
@@ -22,31 +24,75 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var order = await _service.GetByIdAsync(id);
-            if (order == null) return NotFound();
+            if (order == null)
+                return NotFound(new { message = $"Không tìm thấy order với ID: {id}" });
             return Ok(order);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(OrderDTO dto)
+        [Authorize]
+        public async Task<IActionResult> Create([FromBody] OrderDTO dto)
         {
-            var id = await _service.CreateAsync(dto);
-            return Ok(new { message = "Order created", orderId = id });
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized();
+            }
+
+            if (!int.TryParse(userIdString, out int userIdFromToken))
+            {
+                // Token bị "lỗi"
+                return BadRequest(new { message = "Token chứa UserID không hợp lệ." });
+            }
+
+            try
+            {
+                var newOrderId = await _service.CreateAsync(dto, userIdFromToken);
+
+                // Trả về 201 Created
+                return CreatedAtAction(nameof(GetById),
+                                       new { id = newOrderId },
+                                       new { message = "Order created", orderId = newOrderId });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = "Tạo order thất bại. " + ex.Message });
+            }
         }
 
         [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateStatus(int id, [FromBody] string status)
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusRequestDTO dto)
         {
-            await _service.UpdateStatusAsync(id, status);
-            return Ok(new { message = "Order status updated" });
+            var result = await _service.UpdateStatusAsync(id, dto.Status);
+
+            switch (result)
+            {
+                case UpdateStatusResult.Success:
+                    return NoContent();
+
+                case UpdateStatusResult.OrderNotFound:
+                    return NotFound(new { message = $"Không tìm thấy order với ID: {id}" });
+
+                case UpdateStatusResult.StatusNotFound:
+                    return BadRequest(new { message = $"Trạng thái '{dto.Status}' không hợp lệ." });
+
+                default:
+                    return StatusCode(500, "Lỗi máy chủ không xác định");
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _service.DeleteAsync(id);
-            if (!result) return NotFound();
-            return Ok(new { message = "Order deleted" });
+            if (!result)
+                return NotFound(new { message = $"Không tìm thấy order với ID: {id} để xóa" });
+
+            // SỬA: Trả về 204 NoContent
+            return NoContent();
         }
     }
-
 }

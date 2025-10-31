@@ -2,11 +2,14 @@
 using DAT;
 using DAT.Repository;
 using DAT.UnitOfWork;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using WebAPI.Middleware;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 
@@ -37,6 +40,50 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+// Thêm dịch vụ "Xác thực"
+builder.Services.AddAuthentication(options =>
+{
+    // Đặt "Bearer" làm chuẩn
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+// Cấu hình Handler của Bearer
+.AddJwtBearer(options =>
+{
+    // A. Cấu hình "Khóa" 
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"])),
+
+        ValidateIssuer = true,
+        ValidIssuer = config["Jwt:Issuer"],
+
+        ValidateAudience = true,
+        ValidAudience = config["Jwt:Audience"],
+
+        ClockSkew = TimeSpan.Zero // Chuẩn!
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            // Thử lấy token từ cookie trước
+            string? token = context.Request.Cookies["access_token"];
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                context.Token = token;
+            }
+
+            return Task.CompletedTask;
+        }
+    };
+});
+
+builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
 
@@ -47,9 +94,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<SessionTokenMiddleware>();
-
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

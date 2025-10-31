@@ -20,29 +20,20 @@ namespace BUS.Services
         public async Task<IEnumerable<CategoryDTO>> GetAllAsync()
         {
             var categories = await _unitOfWork.Categories.GetAllAsync();
-            return categories.Select(c => new CategoryDTO
-            {
-                CategoryId = c.CategoryID,
-                Name = c.Name,
-                Description = c.Description,
-                ImgUrl = c.ImageURL
-            });
+            // CẢI TIẾN D.R.Y: Dùng hàm MapToDTO
+            return categories.Select(MapToDTO);
         }
 
-        public async Task<CategoryDTO?> GetByIdAsync(long id)
+        public async Task<CategoryDTO?> GetByIdAsync(int id)
         {
             var c = await _unitOfWork.Categories.GetByIdAsync(id);
             if (c == null) return null;
-            return new CategoryDTO
-            {
-                CategoryId = c.CategoryID,
-                Name = c.Name,
-                Description = c.Description,
-                ImgUrl = c.ImageURL
-            };
+
+            // CẢI TIẾN D.R.Y: Dùng hàm MapToDTO
+            return MapToDTO(c);
         }
 
-        public async Task AddAsync(CategoryDTO dto)
+        public async Task<CategoryDTO> AddAsync(CategoryDTO dto)
         {
             var entity = new DAT.Entity.Category
             {
@@ -52,22 +43,28 @@ namespace BUS.Services
             };
             await _unitOfWork.Categories.AddAsync(entity);
             await _unitOfWork.SaveChangesAsync();
+
+            return MapToDTO(entity);
         }
 
-        public async Task UpdateAsync(CategoryDTO dto)
+        public async Task<bool> UpdateAsync(int id, CategoryDTO dto)
         {
-            var entity = await _unitOfWork.Categories.GetByIdAsync(dto.CategoryId);
-            if (entity == null) throw new Exception("Category not found");
+            var entity = await _unitOfWork.Categories.GetByIdAsync(id);
 
+            if (entity == null)
+                return false;
+
+            // Ánh xạ các thay đổi
             entity.Name = dto.Name;
             entity.Description = dto.Description;
             entity.ImageURL = dto.ImgUrl;
 
             _unitOfWork.Categories.Update(entity);
             await _unitOfWork.SaveChangesAsync();
+            return true; // Báo cáo thành công
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var entity = await _unitOfWork.Categories.GetByIdAsync(id);
             if (entity == null) return false;
@@ -75,6 +72,16 @@ namespace BUS.Services
             _unitOfWork.Categories.Remove(entity);
             await _unitOfWork.SaveChangesAsync();
             return true;
+        }
+        private CategoryDTO MapToDTO(DAT.Entity.Category c)
+        {
+            return new CategoryDTO
+            {
+                CategoryId = c.CategoryID,
+                Name = c.Name,
+                Description = c.Description,
+                ImgUrl = c.ImageURL
+            };
         }
     }
 

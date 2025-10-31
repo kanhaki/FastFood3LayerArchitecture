@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-// using static System.Runtime.InteropServices.JavaScript.JSType; // <-- Xóa dòng này, không cần thiết
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Common
 {
@@ -34,8 +34,6 @@ namespace Common
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-        // --- Các hàm còn lại không cần sửa ---
 
         public static DateTime GetExpiryFromSettings(IConfigurationSection jwtSection)
         {
@@ -71,6 +69,13 @@ namespace Common
             {
                 return null;
             }
+        }
+        public static string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[64]; // 64 bytes = 512 bits
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
         }
     }
 }

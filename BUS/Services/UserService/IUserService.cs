@@ -11,8 +11,8 @@ namespace BUS.Services
     {
         Task<IEnumerable<UserDTO>> GetAllUsersAsync();
         Task<UserDTO?> GetUserByIdAsync(int id);
-        Task AddUserAsync(UserDTO userDto);
-        Task UpdateUserAsync(UserDTO userDto);
+        Task<UserDTO> AddUserAsync(UserDTO userDto);
+        Task<bool> UpdateUserAsync(int id, UserDTO userDto);
         Task<bool> DeleteUserAsync(int id);
     }
 }

@@ -8,8 +8,9 @@ namespace DTO.DTO
 {
     public class AuthResponse
     {
-        public long UserId { get; set; }
+        public int UserID { get; set; }
         public string Token { get; set; } = string.Empty;
         public DateTime ExpiresAt { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

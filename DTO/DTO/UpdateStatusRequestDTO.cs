@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO.DTO
 {
-    public class OrderItemDTO
+    public class UpdateStatusRequestDTO
     {
-        public int FoodID { get; set; }
-        public int Quantity { get; set; }
-        public int Price { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Status { get; set; }
     }
 }

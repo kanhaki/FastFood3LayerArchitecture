@@ -9,9 +9,10 @@ namespace BUS.Services
 {
     public interface IAuthService
     {
-        Task<long> SignUpAsync(SignupRequest dto);
+        Task<int> SignUpAsync(SignupRequest dto);
         Task<AuthResponse> LoginAsync(LoginRequest dto);
-        Task LogoutAsync(string token);
-        Task<SessionInfo?> ValidateTokenAsync(string token);
+        Task LogoutAsync(int token);
+        Task<AuthResponse> RefreshTokenAsync(string refreshToken);
+
     }
 }

@@ -8,7 +8,7 @@ namespace DTO.DTO
 {
     public class SessionInfo
     {
-        public long UserId { get; set; }
+        public int UserID { get; set; }
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public DateTime ExpiresAt { get; set; }
