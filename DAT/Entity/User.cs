@@ -32,6 +32,9 @@ namespace DAT.Entity
         [StringLength(512)]
         public string AvatarURL { get; set; }
 
+        [StringLength(256)]
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("foods")]
+    [Route("foods")] // Route gốc đã đúng chuẩn: là danh từ số nhiều
     public class FoodItemController : ControllerBase
     {
         private readonly IFoodItemService _service;
@@ -15,70 +15,91 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        // GET /foods/getAllFoods
-        [HttpGet("getAllFoods")]
-        public async Task<IActionResult> GetAll()
+        // SỬA: GET /foods
+        // CẢI TIẾN: Thêm cả chức năng lọc theo category vào cùng một action
+        [HttpGet] // Bỏ "/" đi, [HttpGet] sẽ tự động map với route gốc là "foods"
+        public async Task<IActionResult> GetFoods([FromQuery] int? categoryId)
         {
-            var items = await _service.GetAllAsync();
-            return Ok(items);
+            if (categoryId.HasValue)
+            {
+                // Nếu có categoryId, gọi hàm lọc
+                var itemsByCategory = await _service.GetFoodsByCategoryAsync(categoryId.Value);
+                // Vẫn trả về 404 nếu không tìm thấy, cách xử lý cũ của bạn đã tốt
+                if (!itemsByCategory.Any())
+                    return NotFound(new { message = $"Không tìm thấy món ăn nào trong category ID: {categoryId.Value}" });
+
+                return Ok(itemsByCategory);
+            }
+            else
+            {
+                // Nếu không có categoryId, lấy tất cả
+                var allItems = await _service.GetAllAsync();
+                return Ok(allItems);
+            }
         }
 
-        // GET /foods/getFoodsByCategory/{categoryId}
-        [HttpGet("getFoodsByCategory/{categoryId}")]
-        public async Task<IActionResult> GetByCategory(int categoryId)
-        {
-            var items = await _service.GetFoodsByCategoryAsync(categoryId);
-            if (!items.Any())
-                return NotFound(new { error = "Không tìm thấy món ăn trong category này", code = 404 });
-
-            return Ok(items);
-        }
-
-        // GET /foods/getFoodInfo/{id}
-        [HttpGet("getFoodInfo/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        // SỬA: GET /foods/{id}
+        [HttpGet("{id}")] // Bỏ "getFoodInfo/", chỉ giữ lại tham số
+        public async Task<IActionResult> GetFoodById(int id)
         {
             var item = await _service.GetByIdAsync(id);
             if (item == null)
-                return NotFound(new { error = "Không tìm thấy món ăn", code = 404 });
+                return NotFound(new { message = $"Không tìm thấy món ăn với ID: {id}" });
+
             return Ok(item);
         }
 
-        // POST /foods/createFood
-        [HttpPost("createFood")]
-        public async Task<IActionResult> Create([FromBody] FoodItemDTO dto)
+        // SỬA: POST /foods
+        [HttpPost] // Bỏ "createFood"
+        public async Task<IActionResult> CreateFood([FromBody] FoodItemDTO dto)
         {
+            // CẢI TIẾN: Kiểm tra ModelState để validate DTO tự động (nếu có [Required], [StringLength]...)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             await _service.AddAsync(dto);
-            return Ok(new { message = "Tạo món ăn thành công", foodName = dto.FoodName });
+
+            // CẢI TIẾN: Trả về 201 Created thay vì 200 OK. Đây là chuẩn REST cho việc tạo mới.
+            // CreatedAtAction sẽ tạo một URL trỏ đến resource vừa tạo trong header "Location".
+            return CreatedAtAction(nameof(GetFoodById), new { id = dto.FoodId }, dto);
         }
 
-        // PUT /foods/updateFood/{id}
-        [HttpPut("updateFood/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] FoodItemDTO dto)
+        [HttpPut("{id}")] // Bỏ "updateFood/"
+        public async Task<IActionResult> UpdateFood(int id, [FromBody] FoodItemDTO dto)
         {
+            // Kiểm tra ID khớp, bạn làm rất tốt!
             if (id != dto.FoodId)
-                return BadRequest(new { error = "ID không khớp với dữ liệu gửi lên", code = 400 });
+                return BadRequest(new { message = "ID trong URL không khớp với ID trong body" });
 
-            try
+            if (!ModelState.IsValid)
             {
-                await _service.UpdateAsync(dto);
-                return Ok(new { message = "Cập nhật thành công", foodId = dto.FoodId });
+                return BadRequest(ModelState);
             }
-            catch (Exception ex)
+
+            var result = await _service.UpdateAsync(dto);
+
+            // Nếu service trả về false (không tìm thấy) -> Trả về 404 Not Found.
+            if (!result)
             {
-                return StatusCode(500, new { error = "Không thể cập nhật món ăn", detail = ex.Message });
+                return NotFound(new { message = $"Không tìm thấy món ăn với ID: {id} để cập nhật" });
             }
+
+            // Trả về 204 NoContent khi thành công.
+            return NoContent();
         }
 
-        // DELETE /foods/deleteFood/{id}
-        [HttpDelete("deleteFood/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        // SỬA: DELETE /foods/{id}
+        [HttpDelete("{id}")] // Bỏ "deleteFood/"
+        public async Task<IActionResult> DeleteFood(int id)
         {
             var result = await _service.DeleteAsync(id);
             if (!result)
-                return NotFound(new { error = "Không tìm thấy món ăn để xóa", code = 404 });
+                return NotFound(new { message = $"Không tìm thấy món ăn với ID: {id} để xóa" });
 
-            return Ok(new { message = "Xóa món ăn thành công", foodId = id });
+            // CẢI TIẾN: Giống như PUT, 204 NoContent là lựa chọn tốt nhất cho việc xóa thành công.
+            return NoContent();
         }
     }
 }

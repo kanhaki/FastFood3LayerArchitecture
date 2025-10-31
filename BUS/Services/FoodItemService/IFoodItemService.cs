@@ -13,7 +13,7 @@ namespace BUS.Services
         Task<IEnumerable<FoodItemDTO>> GetFoodsByCategoryAsync(int categoryId);
         Task<FoodItemDTO?> GetByIdAsync(int id);
         Task AddAsync(FoodItemDTO dto);
-        Task UpdateAsync(FoodItemDTO dto);
+        Task<bool> UpdateAsync(FoodItemDTO dto);
         Task<bool> DeleteAsync(int id);
     }
 

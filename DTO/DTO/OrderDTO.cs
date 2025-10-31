@@ -20,7 +20,7 @@ namespace DTO.DTO
         public string StatusName { get; set; } = "Pending";
 
         public int TotalAmount { get; set; }
-        public DateTime? UpdatedAt { get; set; } // SỬA: cho phép null
+        public DateTime? UpdatedAt { get; set; }
 
         public List<OrderItemDTO> Items { get; set; } = new();
     }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("categories")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _service;
@@ -19,34 +19,53 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(long id)
+        public async Task<IActionResult> GetById(int id)
         {
             var c = await _service.GetByIdAsync(id);
-            if (c == null) return NotFound();
+            if (c == null)
+                return NotFound(new { message = $"Không tìm thấy category với ID: {id}" });
             return Ok(c);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(CategoryDTO dto)
+        public async Task<IActionResult> Add([FromBody] CategoryDTO dto)
         {
-            await _service.AddAsync(dto);
-            return Ok(new { message = "Category created" });
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var newCategory = await _service.AddAsync(dto);
+
+            // SỬA: Trả về 201 CreatedAtAction (chuẩn REST)
+            return CreatedAtAction(nameof(GetById), new { id = newCategory.CategoryId }, newCategory);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, CategoryDTO dto)
+        public async Task<IActionResult> Update(int id, [FromBody] CategoryDTO dto)
         {
-            if (id != dto.CategoryId) return BadRequest();
-            await _service.UpdateAsync(dto);
-            return Ok(new { message = "Category updated" });
+            if (id != dto.CategoryId)
+                return BadRequest(new { message = "ID trong URL không khớp với ID trong body" });
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _service.UpdateAsync(id, dto);
+
+            if (!result)
+                return NotFound(new { message = $"Không tìm thấy category với ID: {id} để cập nhật" });
+
+            // Trả về 204 NoContent
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(long id)
+        public async Task<IActionResult> Delete(int id)
         {
             var result = await _service.DeleteAsync(id);
-            if (!result) return NotFound();
-            return Ok(new { message = "Category deleted" });
+            if (!result)
+                return NotFound(new { message = $"Không tìm thấy category với ID: {id} để xóa" });
+
+            // Trả về 204 NoContent
+            return NoContent();
         }
     }
 

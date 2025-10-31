@@ -10,9 +10,9 @@ namespace BUS.Services
     public interface ICategoryService
     {
         Task<IEnumerable<CategoryDTO>> GetAllAsync();
-        Task<CategoryDTO?> GetByIdAsync(long id);
-        Task AddAsync(CategoryDTO dto);
-        Task UpdateAsync(CategoryDTO dto);
-        Task<bool> DeleteAsync(long id);
+        Task<CategoryDTO?> GetByIdAsync(int id);
+        Task<CategoryDTO> AddAsync(CategoryDTO dto);
+        Task<bool> UpdateAsync(int id, CategoryDTO dto);
+        Task<bool> DeleteAsync(int id);
     }
 }
