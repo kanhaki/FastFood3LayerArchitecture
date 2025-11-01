@@ -1,22 +1,30 @@
-﻿using DAT.Entity;
+﻿using Common;
+using DAT.Entity;
 using DAT.UnitOfWork;
 using DTO.DTO;
+using DTO.DTO.Order;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace BUS.Services
 {
     public class OrderService : IOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IConfiguration _config;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public OrderService(IUnitOfWork unitOfWork)
+        public OrderService(IUnitOfWork unitOfWork, IConfiguration config, IHttpContextAccessor httpContextAccessor)
         {
             _unitOfWork = unitOfWork;
+            _config = config;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IEnumerable<OrderDTO>> GetAllAsync()
         {
@@ -29,7 +37,7 @@ namespace BUS.Services
             if (o == null) return null;
             return MapToDTO(o);
         }
-        public async Task<int> CreateAsync(OrderDTO dto, int userIdFromToken)
+        public async Task<OrderCreationResponseDTO> CreateAsync(OrderDTO dto, int userIdFromToken)
         {
             var pendingStatus = (await _unitOfWork.Repository<OrderStatus>()
                                 .FindAsync(s => s.StatusName == "Pending"))
@@ -73,7 +81,13 @@ namespace BUS.Services
             await _unitOfWork.Orders.AddAsync(order);
             await _unitOfWork.SaveChangesAsync();
 
-            return order.OrderID;
+            string paymentUrl = CreateVnpayPaymentUrl(order, _httpContextAccessor.HttpContext);
+
+            return new OrderCreationResponseDTO
+            {
+                OrderID = order.OrderID,
+                PaymentUrl = paymentUrl
+            };
         }
 
         public async Task<UpdateStatusResult> UpdateStatusAsync(int orderId, string status)
@@ -135,6 +149,62 @@ namespace BUS.Services
                     Price = i.Price
                 }).ToList(),
             };
+        }
+        private string CreateVnpayPaymentUrl(Order order, HttpContext httpContext)
+        {
+            var vnpayConfig = _config.GetSection("Vnpay");
+            var tmnCode = vnpayConfig["TmnCode"];
+            var hashSecret = vnpayConfig["HashSecret"];
+            var baseUrl = vnpayConfig["BaseUrl"];
+            var returnUrl = vnpayConfig["ReturnUrl"];
+            var ipnUrl = vnpayConfig["IpnUrl"];
+
+            var pay = new SortedList<string, string>(StringComparer.Ordinal)
+            {
+                { "vnp_Version", "2.1.0" },
+                { "vnp_Command", "pay" },
+                { "vnp_TmnCode", tmnCode },
+                { "vnp_Amount", (order.TotalAmount * 100).ToString() }, // VNPAY * 100
+                { "vnp_CreateDate", order.CreatedAt.ToString("yyyyMMddHHmmss") },
+                { "vnp_CurrCode", "VND" },
+                { "vnp_IpAddr", GetIpAddress(httpContext) },
+                { "vnp_Locale", "vn" },
+                { "vnp_OrderInfo", $"Thanh toan don hang {order.OrderID}" },
+                { "vnp_OrderType", "other" }, // (Loại hàng hóa)
+                { "vnp_ReturnUrl", returnUrl }, // (URL cho User)
+                { "vnp_IpnUrl", ipnUrl }, // (URL cho Server-to-Server)
+                { "vnp_TxnRef", order.OrderID.ToString() }, // (Mã đơn hàng của BẠN)
+                { "vnp_ExpireDate", order.CreatedAt.AddMinutes(15).ToString("yyyyMMddHHmmss") } // Hạn 15 phút
+            };
+
+            // Ghép chuỗi (key=value&key=value...)
+            var rawDataBuilder = new StringBuilder();
+            foreach (var (key, value) in pay)
+            {
+                rawDataBuilder.Append(key + "=" + value + "&");
+            }
+            string rawData = rawDataBuilder.ToString().Remove(rawDataBuilder.Length - 1, 1); // Xóa dấu & cuối
+
+            // Hash
+            string secureHash = VnpayHelper.HmacSHA512(hashSecret, rawData);
+
+            // Build URL
+            return $"{baseUrl}?{rawData}&vnp_SecureHash={secureHash}";
+        }
+
+        private string GetIpAddress(HttpContext httpContext)
+        {
+            string ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+            if (string.IsNullOrEmpty(ipAddress) || ipAddress == "::1")
+            {
+                ipAddress = "127.0.0.1"; // (IP mặc định nếu là localhost)
+            }
+            // (Xử lý nếu IP là IPv6-mapped-IPv4)
+            if (ipAddress.StartsWith("::ffff:"))
+            {
+                ipAddress = ipAddress.Substring(7);
+            }
+            return ipAddress;
         }
     }
 }
