@@ -50,12 +50,12 @@ namespace WebAPI.Controllers
 
             try
             {
-                var newOrderId = await _service.CreateAsync(dto, userIdFromToken);
+                var responseDto = await _service.CreateAsync(dto, userIdFromToken);
 
-                // Trả về 201 Created
+                // Trả về 201 Created (với URL trỏ đến API)
                 return CreatedAtAction(nameof(GetById),
-                                       new { id = newOrderId },
-                                       new { message = "Order created", orderId = newOrderId });
+                                    new { id = responseDto.OrderID },
+                                    responseDto);
             }
             catch (KeyNotFoundException ex)
             {

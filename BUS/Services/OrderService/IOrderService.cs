@@ -1,4 +1,5 @@
 ﻿using DTO.DTO;
+using DTO.DTO.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace BUS.Services
     {
         Task<IEnumerable<OrderDTO>> GetAllAsync();
         Task<OrderDTO?> GetByIdAsync(int id);
-        Task<int> CreateAsync(OrderDTO dto, int userIdFromToken);
+        Task<OrderCreationResponseDTO> CreateAsync(OrderDTO dto, int userIdFromToken);
 
         Task<UpdateStatusResult> UpdateStatusAsync(int orderId, string status);
         Task<bool> DeleteAsync(int id);
