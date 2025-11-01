@@ -30,7 +30,7 @@ namespace DAT.Entity
         public int RoleID { get; set; }
 
         [StringLength(512)]
-        public string AvatarURL { get; set; }
+        public string? AvatarURL { get; set; }
 
         [StringLength(256)]
         public string? RefreshToken { get; set; }

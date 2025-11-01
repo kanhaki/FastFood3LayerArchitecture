@@ -15,8 +15,8 @@ namespace DTO.DTO
         public string? ImgUrl { get; set; }
         public int StatusID { get; set; }
         public string? StatusName { get; set; } // tiện để hiển thị
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; } // tiện để hiển thị
     }

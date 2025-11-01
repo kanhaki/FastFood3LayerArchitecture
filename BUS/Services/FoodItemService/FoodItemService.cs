@@ -98,7 +98,6 @@ public class FoodItemService : IFoodItemService
         return true;
     }
 
-    // Hàm helper (trợ giúp) để tránh lặp code mapping
     private FoodItemDTO MapToDTO(FoodItem f)
     {
         return new FoodItemDTO

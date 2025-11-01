@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace BUS.Services.PaymentService
 {
-    public interface IPaymentService
+    public interface IVnPayService
     {
-        Task<VnpayIpnResponse> ProcessVnpayIpnAsync(IQueryCollection vnpayParams);
+        string CreatePaymentUrl(PaymentInformationModel model, HttpContext context);
+        PaymentResponseModel PaymentExecute(IQueryCollection collections);
     }
 }

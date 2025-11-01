@@ -21,18 +21,18 @@ namespace DAT.Entity
         public string FoodName { get; set; }
 
         [Required]
-        public int Price { get; set; } // Đã là INT
+        public int Price { get; set; }
 
         [StringLength(512)]
-        public string ImageURL { get; set; }
+        public string? ImageURL { get; set; }
 
         [StringLength(1000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public int StatusID { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         // Navigation property
         [ForeignKey("CategoryID")]

@@ -23,10 +23,10 @@ namespace DAT.Entity
         public DateTime OrderTime { get; set; }
 
         [Required]
-        public int TotalAmount { get; set; } // Đã là INT
+        public int TotalAmount { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         // Navigation properties
         [ForeignKey("UserID")]

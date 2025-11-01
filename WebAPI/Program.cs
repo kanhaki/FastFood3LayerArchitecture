@@ -44,7 +44,7 @@ builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 builder.Services.AddHttpContextAccessor();
 // Thêm dịch vụ "Xác thực"
