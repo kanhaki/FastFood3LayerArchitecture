@@ -14,6 +14,8 @@ namespace DAT.UnitOfWork
         IGenericRepository<Category> Categories { get; }
         IOrderRepository Orders { get; }
         IFoodItemRepository FoodItems { get; }
+        IRestaurantRepository Restaurants { get; }
+        IAddressRepository Addresses { get; }
         IGenericRepository<UserRole> UserRoles { get; }
         IGenericRepository<T> Repository<T>() where T : class;
         Task<int> SaveChangesAsync(CancellationToken ct = default);

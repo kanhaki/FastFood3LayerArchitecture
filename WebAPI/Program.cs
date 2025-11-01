@@ -1,4 +1,6 @@
 ﻿using BUS.Services;
+using BUS.Services.AddressService;
+using BUS.Services.RestaurantService;
 using DAT;
 using DAT.Repository;
 using DAT.UnitOfWork;
@@ -39,6 +41,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 // Thêm dịch vụ "Xác thực"
 builder.Services.AddAuthentication(options =>

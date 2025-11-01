@@ -15,6 +15,8 @@ namespace DAT.UnitOfWork
         private IUserRepository? _userRepo;
         private IFoodItemRepository? _foodItemRepo;
         private IOrderRepository? _orderRepo;
+        private IRestaurantRepository? _restaurantRepo;
+        private IAddressRepository? _addressRepo;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -25,6 +27,8 @@ namespace DAT.UnitOfWork
         public IGenericRepository<Category> Categories => Repository<Category>();
         public IOrderRepository Orders => _orderRepo ??= new OrderRepository(_context);
         public IFoodItemRepository FoodItems => _foodItemRepo ??= new FoodItemRepository(_context);
+        public IRestaurantRepository Restaurants => _restaurantRepo ??= new RestaurantRepository(_context);
+        public IAddressRepository Addresses => _addressRepo ??= new AddressRepository(_context);
         public IGenericRepository<UserRole> UserRoles => Repository<UserRole>();
         public IGenericRepository<T> Repository<T>() where T : class
         {
