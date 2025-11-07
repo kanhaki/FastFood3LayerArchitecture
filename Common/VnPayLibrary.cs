@@ -4,21 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net; // Thư viện này đã có
+using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
-// using System.Web; // Chúng ta không cần thư viện này nữa
 
 namespace Common
 {
-    // Đây là "Cỗ máy" VNPAY mà 'docs' mô tả
     public class VnPayLibrary
     {
         private readonly SortedList<string, string> _requestData = new SortedList<string, string>(new VnPayCompare());
         private readonly SortedList<string, string> _responseData = new SortedList<string, string>(new VnPayCompare());
 
-        // --- Hàm để "nhồi" data (từ 'docs') ---
         public void AddRequestData(string key, string value)
         {
             if (!string.IsNullOrEmpty(value))
@@ -40,22 +37,17 @@ namespace Common
             return _responseData.TryGetValue(key, out var retValue) ? retValue : string.Empty;
         }
 
-        // --- Hàm "In" Link (từ 'docs') ---
         public string CreateRequestUrl(string baseUrl, string vnpHashSecret)
         {
             var data = new StringBuilder();
             foreach (var (key, value) in _requestData.Where(kv => !string.IsNullOrEmpty(kv.Value)))
             {
-                // === SỬA ===
-                // Loại bỏ HttpUtility và bản vá .Replace("+", "%20")
-                // Dùng WebUtility (chuẩn RFC 3986) đã được chứng minh là hoạt động
                 data.Append(WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(value) + "&");
             }
 
             var querystring = data.ToString();
             baseUrl += "?" + querystring;
 
-            // "BÍ KÍP" (Hash chuỗi ĐÃ ENCODE)
             var signData = querystring;
             if (signData.Length > 0)
             {
@@ -67,16 +59,14 @@ namespace Common
 
             return baseUrl;
         }
-
-        // --- Hàm "Soi" Chữ ký (từ 'docs') ---
+    
         public bool ValidateSignature(string inputHash, string secretKey)
         {
             var rspRaw = GetResponseDataForHash(); // Dùng hàm hash "xịn"
             var myChecksum = HmacSha512(secretKey, rspRaw);
             return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
         }
-
-        // --- Hàm "Hash" (từ 'docs') ---
+        
         private string HmacSha512(string key, string inputData)
         {
             var hash = new StringBuilder();
@@ -92,9 +82,7 @@ namespace Common
             }
             return hash.ToString();
         }
-
-        // --- Hàm "Lấy IP" (từ 'docs') ---
-        // (Giữ nguyên hàm này, vì VnPayService sẽ hardcode "127.0.0.1" khi test)
+        
         public string GetIpAddress(HttpContext context)
         {
             var ipAddress = string.Empty;
@@ -116,7 +104,6 @@ namespace Common
             return "127.0.0.1";
         }
 
-        // --- Hàm "Lắp ráp" data để "Soi" (từ 'docs') ---
         private string GetResponseDataForHash()
         {
             var data = new StringBuilder();
@@ -130,9 +117,6 @@ namespace Common
             }
             foreach (var (key, value) in _responseData.Where(kv => !string.IsNullOrEmpty(kv.Value)))
             {
-                // === SỬA ===
-                // Đồng bộ logic với CreateRequestUrl
-                // Dùng WebUtility (chuẩn RFC 3986)
                 data.Append(WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(value) + "&");
             }
             if (data.Length > 0)
@@ -142,8 +126,6 @@ namespace Common
             return data.ToString();
         }
 
-        // --- HÀM "BỘ NÃO" (Lấy từ 'docs') ---
-        // (Giữ nguyên hàm này)
         public PaymentResponseModel GetFullResponseData(IQueryCollection collection, string hashSecret)
         {
             // 1. "Nhồi" data

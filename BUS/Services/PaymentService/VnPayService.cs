@@ -24,7 +24,6 @@ namespace BUS.Services.PaymentService
             var timeZoneById = TimeZoneInfo.FindSystemTimeZoneById(_configuration["TimeZoneId"]);
             var timeNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZoneById);
 
-            // SỬA: Dùng OrderId thật, không dùng "tick" (lỗi của 'docs')
             var tick = model.OrderId.ToString();
 
             var pay = new VnPayLibrary();
@@ -34,10 +33,10 @@ namespace BUS.Services.PaymentService
             pay.AddRequestData("vnp_Version", _configuration["Vnpay:Version"]);
             pay.AddRequestData("vnp_Command", _configuration["Vnpay:Command"]);
             pay.AddRequestData("vnp_TmnCode", _configuration["Vnpay:TmnCode"]);
-            pay.AddRequestData("vnp_Amount", model.Amount.ToString());
+            pay.AddRequestData("vnp_Amount", ((long)model.Amount * 100).ToString());
             pay.AddRequestData("vnp_CreateDate", timeNow.ToString("yyyyMMddHHmmss"));
             pay.AddRequestData("vnp_CurrCode", _configuration["Vnpay:CurrCode"]);
-            //pay.AddRequestData("vnp_IpAddr", pay.GetIpAddress(context));
+            // pay.AddRequestData("vnp_IpAddr", pay.GetIpAddress(context));
             pay.AddRequestData("vnp_IpAddr", "127.0.0.1");
             pay.AddRequestData("vnp_Locale", _configuration["Vnpay:Locale"]);
             pay.AddRequestData("vnp_OrderInfo", $"{model.Name} {model.OrderDescription}");

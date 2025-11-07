@@ -120,7 +120,6 @@ namespace BUS.Services
             // Bước 2: Kiểm tra Order
             var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
 
-            // SỬA: Không "throw", chỉ "báo cáo"
             if (order == null)
                 return UpdateStatusResult.OrderNotFound;
 
