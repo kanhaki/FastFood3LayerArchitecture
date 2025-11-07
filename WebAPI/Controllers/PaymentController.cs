@@ -85,16 +85,7 @@ namespace WebAPI.Controllers
             }
 
             // 3. CẬP NHẬT CSDL
-            var confirmedStatus = (await _uow.Repository<OrderStatus>().FindAsync(s => s.StatusName == "Confirmed")).FirstOrDefault();
             var paymentStatus = (await _uow.Repository<PaymentTransactionStatus>().FindAsync(s => s.StatusName == "Success")).FirstOrDefault();
-
-            if (confirmedStatus == null || paymentStatus == null)
-            {
-                return Content(JsonSerializer.Serialize(new { RspCode = "99", Message = "Database Error: Seed data 'Confirmed' or 'Success' status not found" }), "application/json");
-            }
-
-            order.StatusID = confirmedStatus.StatusID;
-            _uow.Orders.Update(order);
 
             var newTransaction = new PaymentTransaction
             {
